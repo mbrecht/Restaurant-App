@@ -7,16 +7,17 @@ const AppContainer = styled.div``
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
 
-  useEffect(() => {
-    setRestaurants(new Array(3).fill(0).map((val, i) => ({
-      name: i,
-      city: i,
-      state: i,
-      telephone: i,
-      genre: i,
-      error: "Houston, we've got a problem"
-    })))
-  }, [])
+  const getRestaurantData = () => {
+    fetch('https://code-challenge.spectrumtoolbox.com/api/restaurants?sort=name', {
+      headers: {
+        Authorization: "Api-Key q3MNxtfep8Gt"
+      }
+    })
+      .then(res => res.json())
+      .then(data => setRestaurants(data))
+  }
+
+  useEffect(() => getRestaurantData(), []);
 
   return (
     <AppContainer id="app">

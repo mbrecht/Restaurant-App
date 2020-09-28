@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const keys = ['name', 'city', 'state', 'telephone', 'genre'];
 
-const TableContainer = styled.div``
+const TableContainer = styled.table``
 
 const TableHead = styled.thead``
 
