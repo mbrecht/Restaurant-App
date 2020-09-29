@@ -90,11 +90,15 @@ export const Button = styled.button`
   
   &:focus {
     outline: none;
+    // ToDo - add some effect for accessibility that won't stay in focus after click
+  }
+
+  &:hover {
+    background-color: var(--light);
   }
 
   &:active { 
-    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.6);
-    background-color: var(--light);
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.6); // effect to indicate click
   }
 `
 
@@ -129,7 +133,7 @@ export const TableBody = styled.tbody`
   color: black;
 
   tr:nth-child(odd) {
-    background-color: var(--lightest);
+    background-color: var(--lightest); // Lightest color first helps make header pop
   }
 
   tr:nth-child(even) {
