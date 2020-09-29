@@ -1,15 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-
-const FilterContainer = styled.div``
-
-const FilterOption = styled.div``
-
-const Label = styled.label``
-
-const Select = styled.select``
-
-const Option = styled.option``
 
 const Filter = ({ restaurants, updateRestaurants }) => {
 

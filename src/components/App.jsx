@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import Table from './Table.jsx';
 import Filter from './Filter.jsx';
 import Search from './Search.jsx';
-
-const AppContainer = styled.div``
 
 const App = () => {
   const [data, setData] = useState([]);
