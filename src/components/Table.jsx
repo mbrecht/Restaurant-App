@@ -30,6 +30,12 @@ const Table = ({ restaurants }) => {
     return 0;
   }
 
+  // This adds a space between each genre to improve readability
+  const cleanGenres = (restaurant) => {
+    restaurant.genre = restaurant.genre.split(',').join(', ')
+    return restaurant;
+  }
+
   const renderRow = (restaurant, i) => (
     <TR key={i}>
       {
@@ -68,6 +74,7 @@ const Table = ({ restaurants }) => {
               .map(filterByKeys)
               .sort(sortByName)
               .slice(page * count, page * count + count)
+              .map(cleanGenres)
               .map(renderRow)
           }
         </TableBody>
