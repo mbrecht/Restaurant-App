@@ -23,12 +23,13 @@ const Search = ({ restaurants, updateRestaurants }) => {
         type="text"
         value={search}
         onChange={e => setSearch(e.target.value)}
+        placeholder="Search by name, city, or genre"
       />
       <Button 
         type="submit"
         onClick={e => handleSubmit(e)}
       >
-        Submit
+        Search
       </Button>
     </Form>
   )

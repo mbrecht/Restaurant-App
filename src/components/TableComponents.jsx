@@ -1,8 +1,19 @@
 import styled from 'styled-components';
 
-export const TableContainer = styled.div``
+export const TableContainer = styled.div`
+  min-width: 75%;
+`
 
-export const StyledTable = styled.table``
+export const StyledTable = styled.table`
+  border-collapse: collapse;
+  font-size: 1.1rem;
+  width: 100%;
+
+  th, td {
+    border: 1px solid black;
+    padding: 0.5em;
+  }
+`
 
 export const TableHead = styled.thead``
 
