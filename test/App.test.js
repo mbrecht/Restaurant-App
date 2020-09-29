@@ -13,8 +13,4 @@ describe('Initial testing', () => {
   test('Should contain an app component', () => {
     expect(wrapper.find('#app').exists()).toBe(true);
   })
-
-  test('Should contain an H1 with "Hello, World"', () => {
-    expect(wrapper.find('h1').text()).toBe('Hello, World')
-  })
 })
