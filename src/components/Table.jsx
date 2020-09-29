@@ -15,11 +15,10 @@ const Table = ({ restaurants }) => {
 
   const filterByKeys = (restaurant) => (
     Object
-      // keys are inherited through closure
-      .keys(restaurant)
-      .filter(key => keys.includes(key))
-      .reduce((obj, key) => {
-        obj[key] = restaurant[key];
+      .keys(restaurant)                   // Pull out all keys to filter
+      .filter(key => keys.includes(key))  // Keep only keys needed for table
+      .reduce((obj, key) => {             // Return a cleaned version of the original 
+        obj[key] = restaurant[key];       // restaurant object
         return obj;
       }, {})
   )
@@ -30,6 +29,8 @@ const Table = ({ restaurants }) => {
     return 0;
   }
 
+  const renderHeader = (keyName, i) => (<TH key={i}>{keyName}</TH>)
+
   // This adds a space between each genre to improve readability
   const cleanGenres = (restaurant) => {
     restaurant.genre = restaurant.genre.split(',').join(', ')
@@ -38,9 +39,7 @@ const Table = ({ restaurants }) => {
 
   const renderRow = (restaurant, i) => (
     <TR key={i}>
-      {
-        keys.map((key, j) => <TD key={j}>{restaurant[key]}</TD>)
-      }
+      { keys.map((key, j) => <TD key={j}>{restaurant[key]}</TD>) }
     </TR>
   )
 
@@ -63,8 +62,8 @@ const Table = ({ restaurants }) => {
       <StyledTable>
         <TableHead className="table-head">
           <TR>
-            {
-              keys.map((keyName, i) => <TH key={i}>{keyName}</TH>)
+            { 
+              keys.map(renderHeader) 
             }
           </TR>
         </TableHead>
