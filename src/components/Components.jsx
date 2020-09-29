@@ -137,6 +137,8 @@ export const TableBody = styled.tbody`
 
 export const TR = styled.tr``
 
-export const TH = styled.th``
+export const TH = styled.th`
+  text-transform: capitalize;
+`
 
 export const TD = styled.td``
