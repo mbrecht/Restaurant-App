@@ -21,25 +21,25 @@ const Filter = ({ restaurants, updateRestaurants }) => {
 
   const updateFilter = (e, setFilter) => setFilter(e.target.value);
 
-  const filterByState = ({ state }) => stateFilter ? state === stateFilter : true;
-  const filterByGenre = ({ genre }) =>genreFilter ? genre.split(',').includes(genreFilter) : true;
-
   const getStates = ({ state }) => state;
   const getGenres = ({ genre }) => genre.split(',')
-
+  
   // Grab all states only when data is first loaded
   useEffect(() => {
-    setStates([...new Set(restaurants.map(getStates))])
-    setGenres([...new Set(restaurants.map(getGenres).flat())])
+    setStates([...new Set(restaurants.map(getStates).sort())])
+    setGenres([...new Set(restaurants.map(getGenres).flat().sort())])
   }, [])
-
+  
+  const filterByState = ({ state }) => stateFilter ? state === stateFilter : true;
+  const filterByGenre = ({ genre }) =>genreFilter ? genre.split(',').includes(genreFilter) : true;
+  
   useEffect(() => {
     const filtered = restaurants
       .filter(filterByGenre)
       .filter(filterByState)
 
     updateRestaurants(filtered);
-  }, [stateFilter, genreFilter])
+  }, [stateFilter, genreFilter, restaurants])
   
   return (
     <FilterContainer id="filter">
