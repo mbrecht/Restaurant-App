@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-
-const Form = styled.form``
-
-const Input = styled.input``
-
-const Button = styled.button``
+import { Form, Input, Button } from './SearchComponents.jsx';
 
 const Search = ({ restaurants, updateRestaurants }) => {
   const [search, setSearch] = useState('');
