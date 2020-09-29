@@ -16,27 +16,38 @@ const Filter = ({ restaurants, updateRestaurants }) => {
   const [states, setStates] = useState([]);
   const [stateFilter, setStateFilter] = useState('');
 
+  const [genres, setGenres] = useState([]);
+  const [genreFilter, setGenreFilter] = useState('');
+
   const updateFilter = (e, setFilter) => setFilter(e.target.value);
 
-  const filterByState = ({ state }) => stateFilter !== '' ? state === stateFilter : true;
+  const filterByState = ({ state }) => stateFilter ? state === stateFilter : true;
+  const filterByGenre = ({ genre }) =>genreFilter ? genre.split(',').includes(genreFilter) : true;
+
+  const getStates = ({ state }) => state;
+  const getGenres = ({ genre }) => genre.split(',')
 
   // Grab all states only when data is first loaded
-  useEffect(() => setStates([...new Set(restaurants.map(({ state }) => state))]), [])
+  useEffect(() => {
+    setStates([...new Set(restaurants.map(getStates))])
+    setGenres([...new Set(restaurants.map(getGenres).flat())])
+  }, [])
 
   useEffect(() => {
     const filtered = restaurants
+      .filter(filterByGenre)
       .filter(filterByState)
 
     updateRestaurants(filtered);
-  }, [stateFilter])
+  }, [stateFilter, genreFilter])
   
   return (
     <FilterContainer>
       <FilterOption>
-        <Label htmlFor="states">Pick a State</Label>
+        <Label htmlFor="states">Filter By State</Label>
         <Select name="states" onChange={e => updateFilter(e, setStateFilter)}>
           {/* Blank option */}
-          <Option value="">Filter By State</Option>
+          <Option value="">All States</Option>
           {
             states.map((state, i) => (
               <Option 
@@ -44,6 +55,23 @@ const Filter = ({ restaurants, updateRestaurants }) => {
                 key={i}
               >
                 {state}
+              </Option>
+            ))
+          }
+        </Select>
+      </FilterOption>
+      <FilterOption>
+        <Label htmlFor="genres">Pick a Genre</Label>
+        <Select name="states" onChange={e => updateFilter(e, setGenreFilter)}>
+          {/* Blank option */}
+          <Option value="">All Genres</Option>
+          {
+            genres.map((genre, i) => (
+              <Option 
+                value={genre}
+                key={i}
+              >
+                {genre}
               </Option>
             ))
           }
