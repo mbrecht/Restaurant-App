@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Table from './Table.jsx';
+import Filter from './Filter.jsx';
 
 const AppContainer = styled.div``
 
@@ -20,15 +21,14 @@ const App = () => {
   useEffect(() => getRestaurantData(), []);
 
   return (
+    restaurants.length > 1
+    ?
     <AppContainer id="app">
-      {
-        restaurants.length > 1
-        ?
-        <Table restaurants={restaurants} />
-        :
-        null
-      }
+      <Filter restaurants={restaurants} />
+      <Table restaurants={restaurants} />
     </AppContainer>
+    :
+    null
   )
 };
 
