@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from '../src/components/Table';
+import Filter from '../src/components/Filter';
 
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -8,9 +8,9 @@ configure({ adapter: new Adapter() });
 describe('Initial testing', () => {
   let wrapper;
 
-  beforeEach(() => wrapper = shallow(<Table restaurants={[]}/>))
+  beforeEach(() => wrapper = shallow(<Filter />))
 
-  test('Should contain an table component', () => {
-    expect(wrapper.find('.table').exists()).toBe(true);
+  test('Should contain a filter component', () => {
+    expect(wrapper.find('#filter').exists()).toBe(true);
   })
 })

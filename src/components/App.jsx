@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Table from './Table.jsx';
+import Filter from './Filter.jsx';
 
 const AppContainer = styled.div``
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
   const getRestaurantData = () => {
     fetch('https://code-challenge.spectrumtoolbox.com/api/restaurants?sort=name', {
@@ -20,15 +22,17 @@ const App = () => {
   useEffect(() => getRestaurantData(), []);
 
   return (
+    restaurants.length > 0
+    ?
     <AppContainer id="app">
-      {
-        restaurants.length > 1
-        ?
-        <Table restaurants={restaurants} />
-        :
-        null
-      }
+      <Filter 
+        restaurants={restaurants}
+        updateRestaurants={filtered => setFilteredRestaurants(filtered)} 
+      />
+      <Table restaurants={filteredRestaurants || restaurants} />
     </AppContainer>
+    :
+    null
   )
 };
 
