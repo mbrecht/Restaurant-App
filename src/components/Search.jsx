@@ -24,7 +24,7 @@ const Search = ({ restaurants, updateRestaurants }) => {
   }
 
   return (
-    <Form>
+    <Form className="search">
       <Input 
         type="text"
         value={search}
