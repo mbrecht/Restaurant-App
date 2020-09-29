@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FilterContainer, FilterOption, Option, Label, Select } from './FilteredComponents.jsx';
 
 const Filter = ({ restaurants, updateRestaurants }) => {
 
