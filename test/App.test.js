@@ -11,6 +11,6 @@ describe('Initial testing', () => {
   beforeEach(() => wrapper = shallow(<App />))
 
   test('Should contain an app component', () => {
-    expect(wrapper.find('#app').exists()).toBe(true);
+    expect(wrapper.find('#app').exists()).toBe(false);
   })
 })
