@@ -10,25 +10,37 @@ export const AppContainer = styled.div`
 
   width: 75%;
   margin: 0 auto;
+
+  --primary: #422790;
 `
 
 // Filter Components
 export const FilterContainer = styled.div`
   display: flex;
+  justify-content: flex-end;
   font-size: 1.2rem;
-  flex-basis: 25%;
+  flex-basis: 50%;
+  margin-bottom: 1em;
 `
 
 export const FilterOption = styled.div`
-`
-
-export const Label = styled.label`
-  margin-right: 0.5em;
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
 `
 
 export const Select = styled.select`
   border: none;
   font-size: 1rem;
+
+  background: white;
+  border-width: 0;
+  border-bottom: 3px solid #ccc;
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
 `
 
 export const Option = styled.option`
@@ -38,23 +50,31 @@ export const Option = styled.option`
 
 // Search Components
 export const Form = styled.form`
-  margin: 1em 0;
+  display: flex;
   flex-basis: 50%;
+  align-items: flex-end;
+  margin: 1em 0;
 `
 
 export const Input = styled.input`
+  margin-right: 1em;
   padding: 0.5em;
   font-size: 1rem;
   width: 50%;
-  border: none;
+  background: white;
+  border-width: 0;
+  border-bottom-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient(to right, #ccc 70%,  rgba(0, 0, 0, 0)) 1;
 
   &:focus {
     outline: none;
+    border-image: linear-gradient(to right, var(--primary), rgba(0, 0, 0, 0)) 1;
   }
 `
 
 export const Button = styled.button`
-  background-color: #422790;
+  background-color: var(--primary);
   margin-top: 1em;
   margin-right: 0.5em;
   border: none;

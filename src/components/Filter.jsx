@@ -34,7 +34,6 @@ const Filter = ({ restaurants, updateRestaurants }) => {
   return (
     <FilterContainer id="filter">
       <FilterOption>
-        <Label htmlFor="states">Filter By State</Label>
         <Select name="states" onChange={e => updateFilter(e, setStateFilter)}>
           {/* Blank option */}
           <Option value="">All States</Option>
@@ -51,7 +50,6 @@ const Filter = ({ restaurants, updateRestaurants }) => {
         </Select>
       </FilterOption>
       <FilterOption>
-        <Label htmlFor="genres">Filter by Genre</Label>
         <Select name="states" onChange={e => updateFilter(e, setGenreFilter)}>
           {/* Blank option */}
           <Option value="">All Genres</Option>
