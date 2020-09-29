@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Button } from './SearchComponents.jsx';
+import { Form, Input, Button } from './Components.jsx';
 
 const Search = ({ restaurants, updateRestaurants }) => {
   const [search, setSearch] = useState('');

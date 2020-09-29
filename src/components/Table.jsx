@@ -8,7 +8,7 @@ import {
   TH,
   TD,
   Button
-} from './TableComponents.jsx';
+} from './Components.jsx';
 
 const Table = ({ restaurants }) => {
   const keys = ['name', 'city', 'state', 'telephone', 'genre'];
