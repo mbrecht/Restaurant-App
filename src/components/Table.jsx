@@ -26,6 +26,12 @@ const filterByKeys = (restaurant) => (
     }, {})
 )
 
+const sortByName = (a, b) => {
+  if(a.name < b.name) return -1;
+  if(b.name < a.name) return 1;
+  return 0;
+}
+
 const renderRow = (restaurant, i) => (
   <TR key={i}>
     {
@@ -49,6 +55,7 @@ const Table = ({ restaurants }) => {
         {
           restaurants
             .map(filterByKeys)
+            .sort(sortByName)
             .map(renderRow)
         }
       </TableBody>
