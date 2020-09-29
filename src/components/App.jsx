@@ -7,6 +7,7 @@ const AppContainer = styled.div``
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
   const getRestaurantData = () => {
     fetch('https://code-challenge.spectrumtoolbox.com/api/restaurants?sort=name', {
@@ -21,11 +22,14 @@ const App = () => {
   useEffect(() => getRestaurantData(), []);
 
   return (
-    restaurants.length > 1
+    restaurants.length > 0
     ?
     <AppContainer id="app">
-      <Filter restaurants={restaurants} />
-      <Table restaurants={restaurants} />
+      <Filter 
+        restaurants={restaurants}
+        updateRestaurants={filtered => setFilteredRestaurants(filtered)} 
+      />
+      <Table restaurants={filteredRestaurants || restaurants} />
     </AppContainer>
     :
     null
