@@ -12,6 +12,8 @@ export const AppContainer = styled.div`
   margin: 0 auto;
 
   --primary: #422790;
+  --light: #9c94f0eb;
+  --lightest: #9c94f091;
 `
 
 // Filter Components
@@ -98,7 +100,7 @@ export const TableContainer = styled.div`
 
 export const StyledTable = styled.table`
   border-collapse: collapse;
-  font-size: 1.1rem;
+  font-size: 1rem;
   width: 100%;
 
   th, td {
@@ -122,11 +124,11 @@ export const TableBody = styled.tbody`
   color: black;
 
   tr:nth-child(odd) {
-    background-color: #9c94f091;
+    background-color: var(--lightest);
   }
 
   tr:nth-child(even) {
-    background-color: #9c94f0eb;
+    background-color: var(--light);
   }
 
   position: relative;
