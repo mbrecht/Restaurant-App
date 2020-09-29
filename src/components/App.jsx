@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Table from './Table.jsx';
 import Filter from './Filter.jsx';
+import Search from './Search.jsx';
 
 const AppContainer = styled.div``
 
 const App = () => {
+  const [data, setData] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
@@ -16,15 +18,23 @@ const App = () => {
       }
     })
       .then(res => res.json())
-      .then(data => setRestaurants(data))
+      .then(data => {
+        setFilteredRestaurants(data);
+        setRestaurants(data);
+        setData(data)
+      })
   }
 
   useEffect(() => getRestaurantData(), []);
 
   return (
-    restaurants.length > 0
+    data.length > 0
     ?
     <AppContainer id="app">
+      <Search 
+        restaurants={data}
+        updateRestaurants={search => setRestaurants(search)} 
+      />
       <Filter 
         restaurants={restaurants}
         updateRestaurants={filtered => setFilteredRestaurants(filtered)} 
