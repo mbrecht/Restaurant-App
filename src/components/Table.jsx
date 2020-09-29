@@ -7,10 +7,7 @@ import {
   TR,
   TH,
   TD,
-  FirstButton,
-  PrevButton,
-  NextButton,
-  LastButton
+  Button
 } from './TableComponents.jsx';
 
 const Table = ({ restaurants }) => {
@@ -75,10 +72,10 @@ const Table = ({ restaurants }) => {
           }
         </TableBody>
       </StyledTable>
-      <FirstButton onClick={e => handleClick(e, 0)} />
-      <PrevButton onClick={e => handleClick(e, page - 1)} />
-      <NextButton onClick={e => handleClick(e, page + 1)} />
-      <LastButton onClick={e => handleClick(e, lastPage)} />
+      <Button onClick={e => handleClick(e, 0)}>&lt;&lt; First</Button>
+      <Button onClick={e => handleClick(e, page - 1)}>&lt; Previous</Button>
+      <Button onClick={e => handleClick(e, page + 1)}>Next &gt;</Button>
+      <Button onClick={e => handleClick(e, lastPage)}>Last &gt;&gt;</Button>
     </TableContainer>
   )
 }

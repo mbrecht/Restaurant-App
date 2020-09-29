@@ -5,11 +5,11 @@ export const Form = styled.form`
 `
 
 export const Input = styled.input`
-  padding: 0.75em;
+  padding: 0.5em;
   font-size: 1rem;
 `
 
 export const Button = styled.button`
-  padding: 0.75em;
+  padding: 0.5em;
   font-size: 1rem;
 `

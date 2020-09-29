@@ -51,7 +51,7 @@ const Filter = ({ restaurants, updateRestaurants }) => {
         </Select>
       </FilterOption>
       <FilterOption>
-        <Label htmlFor="genres">Pick a Genre</Label>
+        <Label htmlFor="genres">Filter by Genre</Label>
         <Select name="states" onChange={e => updateFilter(e, setGenreFilter)}>
           {/* Blank option */}
           <Option value="">All Genres</Option>
