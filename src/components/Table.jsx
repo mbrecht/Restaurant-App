@@ -7,11 +7,8 @@ import {
   TR,
   TH,
   TD,
-  FirstButton,
-  PrevButton,
-  NextButton,
-  LastButton
-} from './TableComponents.jsx';
+  Button
+} from './Components.jsx';
 
 const Table = ({ restaurants }) => {
   const keys = ['name', 'city', 'state', 'telephone', 'genre'];
@@ -31,6 +28,12 @@ const Table = ({ restaurants }) => {
     if(a.name < b.name) return -1;
     if(b.name < a.name) return 1;
     return 0;
+  }
+
+  // This adds a space between each genre to improve readability
+  const cleanGenres = (restaurant) => {
+    restaurant.genre = restaurant.genre.split(',').join(', ')
+    return restaurant;
   }
 
   const renderRow = (restaurant, i) => (
@@ -71,14 +74,15 @@ const Table = ({ restaurants }) => {
               .map(filterByKeys)
               .sort(sortByName)
               .slice(page * count, page * count + count)
+              .map(cleanGenres)
               .map(renderRow)
           }
         </TableBody>
       </StyledTable>
-      <FirstButton onClick={e => handleClick(e, 0)} />
-      <PrevButton onClick={e => handleClick(e, page - 1)} />
-      <NextButton onClick={e => handleClick(e, page + 1)} />
-      <LastButton onClick={e => handleClick(e, lastPage)} />
+      <Button onClick={e => handleClick(e, 0)}>&lt;&lt; First</Button>
+      <Button onClick={e => handleClick(e, page - 1)}>&lt; Previous</Button>
+      <Button onClick={e => handleClick(e, page + 1)}>Next &gt;</Button>
+      <Button onClick={e => handleClick(e, lastPage)}>Last &gt;&gt;</Button>
     </TableContainer>
   )
 }

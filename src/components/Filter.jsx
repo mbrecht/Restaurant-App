@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FilterContainer, FilterOption, Option, Label, Select } from './FilteredComponents.jsx';
+import { FilterContainer, FilterOption, Option, Label, Select } from './Components.jsx';
 
 const Filter = ({ restaurants, updateRestaurants }) => {
 
@@ -34,7 +34,6 @@ const Filter = ({ restaurants, updateRestaurants }) => {
   return (
     <FilterContainer id="filter">
       <FilterOption>
-        <Label htmlFor="states">Filter By State</Label>
         <Select name="states" onChange={e => updateFilter(e, setStateFilter)}>
           {/* Blank option */}
           <Option value="">All States</Option>
@@ -51,7 +50,6 @@ const Filter = ({ restaurants, updateRestaurants }) => {
         </Select>
       </FilterOption>
       <FilterOption>
-        <Label htmlFor="genres">Pick a Genre</Label>
         <Select name="states" onChange={e => updateFilter(e, setGenreFilter)}>
           {/* Blank option */}
           <Option value="">All Genres</Option>
