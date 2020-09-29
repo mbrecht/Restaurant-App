@@ -2,6 +2,14 @@ import styled from 'styled-components';
 
 export const TableContainer = styled.div`
   min-width: 75%;
+
+  button {
+    margin: 1em 0.5em;
+    border: none;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.6);
+    min-height: 2em;
+    min-width: 2em;
+  }
 `
 
 export const StyledTable = styled.table`
@@ -13,6 +21,8 @@ export const StyledTable = styled.table`
     border: 1px solid black;
     padding: 0.5em;
   }
+  
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.34);
 `
 
 export const TableHead = styled.thead``
