@@ -10,7 +10,7 @@ const App = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
   const getRestaurantData = () => {
-    fetch('https://code-challenge.spectrumtoolbox.com/api/restaurants?sort=name', {
+    fetch('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
       headers: {
         Authorization: "Api-Key q3MNxtfep8Gt"
       }
