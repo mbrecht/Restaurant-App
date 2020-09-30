@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   TableContainer,
   StyledTable,
@@ -29,30 +29,32 @@ const Table = ({ restaurants }) => {
     return 0;
   }
 
-  const renderHeader = (keyName, i) => (<TH className="header-item" key={i}>{keyName}</TH>)
-
   // This adds a space between each genre to improve readability
   const cleanGenres = (restaurant) => {
     restaurant.genre = restaurant.genre.split(',').join(', ')
     return restaurant;
   }
 
+  // Rendering functions
   const renderRow = (restaurant, i) => (
     <TR className="table-data" key={i}>
       { keys.map((key, j) => <TD key={j}>{restaurant[key]}</TD>) }
     </TR>
   )
+  
+  const renderHeader = (keyName, i) => (<TH className="header-item" key={i}>{keyName}</TH>)
 
+  // State used to track pagination
   const [page, setPage] = useState(0);
   const [count, setCount] = useState(10);
 
-  const lastPage = Math.floor(restaurants.length / 10);
+  const lastPage = Math.floor(restaurants.length / 10); // Useful to know what the last page is for pagination
 
   const handleClick = (e, targetPage) => {
     e.preventDefault();
 
-    targetPage < 0 ? targetPage = 0 : null;
-    targetPage > lastPage ? targetPage = lastPage : null;
+    targetPage < 0 ? targetPage = 0 : null; // Prevents from trying to access pages below 0
+    targetPage > lastPage ? targetPage = lastPage : null; // Prevents from trying to access pages beyond the last page 
 
     setPage(targetPage);
   }
@@ -70,11 +72,11 @@ const Table = ({ restaurants }) => {
         <TableBody className="table-body">
           {
             restaurants
-              .map(filterByKeys)
-              .sort(sortByName)
-              .slice(page * count, page * count + count)
-              .map(cleanGenres)
-              .map(renderRow)
+              .map(filterByKeys)  // Make sure to only keep needed keys; no extra data
+              .sort(sortByName)   // Everything should be in alphabetical order
+              .slice(page * count, page * count + count) // Pagination
+              .map(cleanGenres)   // Puts a space between genres to improve presentation
+              .map(renderRow)     // Creates each row element
           }
         </TableBody>
       </StyledTable>
