@@ -25,7 +25,8 @@ export const FilterContainer = styled.div`
   margin-bottom: 1em;
 `
 
-export const FilterOption = styled.div`
+// Container for each individual filter
+export const FilterChoice = styled.div`
   margin-left: 1em;
   display: inline-block;
   vertical-align: top;
