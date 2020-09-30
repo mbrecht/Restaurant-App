@@ -29,7 +29,7 @@ const Table = ({ restaurants }) => {
     return 0;
   }
 
-  const renderHeader = (keyName, i) => (<TH key={i}>{keyName}</TH>)
+  const renderHeader = (keyName, i) => (<TH className="header-item" key={i}>{keyName}</TH>)
 
   // This adds a space between each genre to improve readability
   const cleanGenres = (restaurant) => {
@@ -38,7 +38,7 @@ const Table = ({ restaurants }) => {
   }
 
   const renderRow = (restaurant, i) => (
-    <TR key={i}>
+    <TR className="table-data" key={i}>
       { keys.map((key, j) => <TD key={j}>{restaurant[key]}</TD>) }
     </TR>
   )
@@ -61,7 +61,7 @@ const Table = ({ restaurants }) => {
     <TableContainer className="table">
       <StyledTable>
         <TableHead className="table-head">
-          <TR>
+          <TR className="table-header">
             { 
               keys.map(renderHeader) 
             }
