@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FilterContainer, FilterOption, Option, Label, Select } from './Components.jsx';
+import { FilterContainer, FilterChoice, Option, Label, Select } from './Components.jsx';
 
 const Filter = ({ restaurants, updateRestaurants }) => {
 
@@ -11,18 +11,21 @@ const Filter = ({ restaurants, updateRestaurants }) => {
 
   const updateFilter = (e, setFilter) => setFilter(e.target.value);
 
-  const getStates = ({ state }) => state;
-  const getGenres = ({ genre }) => genre.split(',')
+  const getStates = ({ state }) => state; // Cleans restaurant array to easily setStates
+  const getGenres = ({ genre }) => genre.split(',') // Cleans restaurant array to pull out all genres
   
   // Grab all states only when data is first loaded
   useEffect(() => {
+    // Sets will automatically remove all duplicates here, giving a clean list of unique values for each option
     setStates([...new Set(restaurants.map(getStates).sort())])
     setGenres([...new Set(restaurants.map(getGenres).flat().sort())])
   }, [])
   
+  // Apply state and genre filters before sending back to main component
   const filterByState = ({ state }) => stateFilter ? state === stateFilter : true;
   const filterByGenre = ({ genre }) =>genreFilter ? genre.split(',').includes(genreFilter) : true;
   
+  // Apply filters whenever the state or genre filter update or when restaurants updates
   useEffect(() => {
     const filtered = restaurants
       .filter(filterByGenre)
@@ -30,41 +33,38 @@ const Filter = ({ restaurants, updateRestaurants }) => {
 
     updateRestaurants(filtered);
   }, [stateFilter, genreFilter, restaurants])
+
+  // Render Functions
+  const renderOption = (value, i) => (<Option value={value} key={i}>{value}</Option>)
+
+  const renderFilter = ({ name, data, update }, i) => (
+    <FilterChoice className="filter-choice" key={i}>
+      <Select name={name} onChange={e => updateFilter(e, update)}>
+        {/* All Option */}
+        <Option value="" className="capital">All {name}</Option>
+        { data.map(renderOption) }
+      </Select>
+    </FilterChoice>
+  )
+
+  // Array of choices to map over
+  // ToDo - make this programmatic instead of hardcoded
+  const choices = [
+    {
+      name: 'states',
+      data: states,
+      update: setStates
+    },
+    {
+      name: 'genres',
+      data: genres,
+      update: setGenres
+    }
+  ]
   
   return (
     <FilterContainer id="filter">
-      <FilterOption>
-        <Select name="states" onChange={e => updateFilter(e, setStateFilter)}>
-          {/* Blank option */}
-          <Option value="">All States</Option>
-          {
-            states.map((state, i) => (
-              <Option 
-                value={state}
-                key={i}
-              >
-                {state}
-              </Option>
-            ))
-          }
-        </Select>
-      </FilterOption>
-      <FilterOption>
-        <Select name="states" onChange={e => updateFilter(e, setGenreFilter)}>
-          {/* Blank option */}
-          <Option value="">All Genres</Option>
-          {
-            genres.map((genre, i) => (
-              <Option 
-                value={genre}
-                key={i}
-              >
-                {genre}
-              </Option>
-            ))
-          }
-        </Select>
-      </FilterOption>
+      { choices.map(renderFilter) }
     </FilterContainer>
   )
 };
