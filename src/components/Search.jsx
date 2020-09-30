@@ -20,12 +20,14 @@ const Search = ({ restaurants, updateRestaurants }) => {
   return (
     <Form className="search">
       <Input 
+        className="search-input"
         type="text"
         value={search}
         onChange={e => setSearch(e.target.value)}
         placeholder="Search by name, city, or genre"
       />
       <Button 
+        className="search-button"
         type="submit"
         onClick={e => handleSubmit(e)}
       >
