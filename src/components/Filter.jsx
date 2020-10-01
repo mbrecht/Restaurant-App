@@ -41,7 +41,8 @@ const Filter = ({ restaurants, updateRestaurants }) => {
     <FilterChoice className="filter-choice" key={i}>
       <Select name={name} onChange={e => updateFilter(e, update)}>
         {/* All Option */}
-        <Option value="" className="capital">All {name}</Option>
+        <Option value="">All {name}</Option>
+        { console.log(data) }
         { data.map(renderOption) }
       </Select>
     </FilterChoice>
@@ -53,12 +54,12 @@ const Filter = ({ restaurants, updateRestaurants }) => {
     {
       name: 'states',
       data: states,
-      update: setStates
+      update: setStateFilter
     },
     {
       name: 'genres',
       data: genres,
-      update: setGenres
+      update: setGenreFilter
     }
   ]
   
