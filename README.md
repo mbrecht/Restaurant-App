@@ -1,4 +1,4 @@
-# Coding Challenge - Michael Brecht
+# Restaurant App
 
 [**This site is currently live**](http://spectrumcodingchallenge-env.eba-ydm3ycdp.us-west-2.elasticbeanstalk.com/)
 
@@ -6,7 +6,7 @@
 
 `npm start` will install all dependencies, build the production bundle file, and start a server on port 3000 or whatever `process.env.PORT` is set to.
 
-`npm build-dev` will build the bunlde file in development mode with the watch flag enabled.
+`npm build-dev` will build the bundle file in development mode with the watch flag enabled.
 
 `npm start-dev` will run a server using nodemon in order to restart upon any updates to the code.
 
