@@ -71,12 +71,18 @@ const Table = ({ restaurants }) => {
         </TableHead>
         <TableBody className="table-body">
           {
+            restaurants.length
+            ?
             restaurants
               .map(filterByKeys)  // Make sure to only keep needed keys; no extra data
               .sort(sortByName)   // Everything should be in alphabetical order
               .slice(page * count, page * count + count) // Pagination
               .map(cleanGenres)   // Puts a space between genres to improve presentation
               .map(renderRow)     // Creates each row element
+            :
+            <TR>
+              <TD colSpan={5} textCenter>No Results Found</TD>
+            </TR>
           }
         </TableBody>
       </StyledTable>
