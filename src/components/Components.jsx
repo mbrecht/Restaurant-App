@@ -151,4 +151,6 @@ export const TH = styled.th`
   text-transform: capitalize;
 `
 
-export const TD = styled.td``
+export const TD = styled.td`
+  text-align: ${props => props.textCenter ? 'center' : 'left'};
+`

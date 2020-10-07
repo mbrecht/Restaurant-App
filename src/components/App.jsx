@@ -26,8 +26,6 @@ const App = () => {
   useEffect(() => getRestaurantData(), []);
 
   return (
-    data.length > 0
-    ?
     <AppContainer id="app">
       <Search 
         restaurants={data}
@@ -37,10 +35,8 @@ const App = () => {
         restaurants={restaurants}
         updateRestaurants={filtered => setFilteredRestaurants(filtered)} 
       />
-      <Table restaurants={filteredRestaurants || restaurants} />
+      <Table restaurants={[...filteredRestaurants]} />
     </AppContainer>
-    :
-    null
   )
 };
 
